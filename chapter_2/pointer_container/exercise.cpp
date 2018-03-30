@@ -15,10 +15,12 @@ public:
     animal(string name_, int legs_, bool hasTail_): name(name_), legs(legs_), hasTail(hasTail_){};
 
     void display() {cout << name << " has " << legs << " legs and " << hasTail << " tail" << endl;}
-    bool operator < (animal &x) {return legs < x.legs;};
-    bool operator > (animal &x) {return legs > x.legs;};
+    bool operator < (const animal &x) const {return legs < x.legs;};
+    //bool operator > (const animal &x) const {return legs > x.legs;};
     
 };
+
+bool compare(const animal& a, const animal& b){return a<b;}
 
 int main()
 {
@@ -33,6 +35,10 @@ int main()
 
     //
     v.sort();
+    cout << endl;
+
+    for(int i=0; i<v.size(); i++)
+        v[i].display();
 
     return 0;
 }
